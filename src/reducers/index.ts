@@ -1,65 +1,13 @@
-type Todo = {
-  label: string;
-  content: string;
-};
+import {
+  TodoActionTypes,
+  InitialState,
+  TodoState,
+} from "../entities/todoList";
 
-type InitialState = {
-  todos: Todo[];
-  error: string;
-};
-
-type TodoState = {
-  todos: Todo[];
-  error: string;
-};
-
-type TodoFetchRequested = {
-  type: 'TODO_FETCH_REQUESTED',
-  payload: {
-    todos: Todo[],
-  },
-};
-
-type TodoFetchFailure = {
-  type: 'TODO_FETCH_FAILURE',
-  payload: {
-    error: string,
-  },
-};
-
-type TodoFetchSuccess = {
-  type: 'TODO_FETCH_SUCCESS',
-  payload: {
-    todos: Todo[],
-  },
-};
-
-type TodoActionTypes = TodoFetchRequested | TodoFetchFailure | TodoFetchSuccess;
-
-const TODO_FETCH_REQUESTED = 'TODO_FETCH_REQUESTED';
-const TODO_FETCH_FAILURE = 'TODO_FETCH_FAILURE';
-const TODO_FETCH_SUCCESS = 'TODO_FETCH_SUCCESS';
-
-export const todoFetchRequested = (): TodoActionTypes => ({
-  type: TODO_FETCH_REQUESTED,
-  payload: {
-    todos: [],
-  },
-});
-
-export const todoFetchFailure = (): TodoActionTypes => ({
-  type: TODO_FETCH_FAILURE,
-  payload: {
-    error: 'c tout kc',
-  },
-});
-
-export const todoFetchSuccess = (): TodoActionTypes => ({
-  type: TODO_FETCH_SUCCESS,
-  payload: {
-    todos: [],
-  },
-});
+import {
+  TODO_FETCH_FAILURE,
+  TODO_FETCH_SUCCESS,
+} from "../actions/actionTypes";
 
 const initialState: InitialState = {
   todos: [],
