@@ -5,11 +5,15 @@ export type Todo = {
 
 export type InitialState = {
   todos: Todo[];
+  isLoading: boolean;
+  isError: boolean;
   error: string;
 };
 
 export type TodoState = {
   todos: Todo[];
+  isLoading: boolean;
+  isError: boolean;
   error: string;
 };
 

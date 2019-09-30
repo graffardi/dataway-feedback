@@ -11,6 +11,8 @@ import {
 
 const initialState: InitialState = {
   todos: [],
+  isLoading: false,
+  isError: false,
   error: '',
 };
 
@@ -24,6 +26,8 @@ const initialReducer = (
 
       return {
         ...state,
+        isLoading: false,
+        isError: true,
         error,
       };
     }
@@ -33,6 +37,7 @@ const initialReducer = (
 
       return {
         ...state,
+        isLoading: false,
         todos,
       }
     }
