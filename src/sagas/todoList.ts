@@ -12,8 +12,8 @@ function* fetchTodo() {
     const todo: Todo = yield call(fakeApi.fetchTodo);
 
     yield put(todoFetchSuccess(todo));
-  } catch {
-    yield put(todoFetchFailure('I think it\'s broken'));
+  } catch (error) {
+    yield put(todoFetchFailure(error));
   }
 }
 
