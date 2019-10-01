@@ -19,9 +19,6 @@ export type TodoState = {
 
 type TodoFetchRequested = {
   type: 'TODO_FETCH_REQUESTED',
-  payload: {
-    todos: Todo[],
-  },
 };
 
 type TodoFetchFailure = {
@@ -34,7 +31,7 @@ type TodoFetchFailure = {
 type TodoFetchSuccess = {
   type: 'TODO_FETCH_SUCCESS',
   payload: {
-    todos: Todo[],
+    todo: Todo,
   },
 };
 

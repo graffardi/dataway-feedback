@@ -7,6 +7,8 @@ import { createStore, applyMiddleware } from 'redux';
 
 import createSagaMiddleware from 'redux-saga';
 
+import watchTodosSaga from './sagas/todoList';
+
 import App from './App';
 
 import reducer from './reducers';
@@ -20,7 +22,7 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 );
 
-// sagaMiddleware.run();
+sagaMiddleware.run(watchTodosSaga);
 
 const ProvidedApp = () => (
   <Provider store={store}>

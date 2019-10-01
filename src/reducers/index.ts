@@ -33,12 +33,12 @@ const initialReducer = (
     }
 
     case TODO_FETCH_SUCCESS: {
-      const { todos } = action.payload;
+      const { todo } = action.payload;
 
       return {
         ...state,
         isLoading: false,
-        todos,
+        todos: [...state.todos, todo],
       }
     }
 

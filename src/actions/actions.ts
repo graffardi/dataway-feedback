@@ -1,4 +1,4 @@
-import { TodoActionTypes } from "../entities/todoList";
+import { TodoActionTypes, Todo } from "../entities/todoList";
 
 import {
   TODO_FETCH_REQUESTED,
@@ -9,21 +9,18 @@ import {
 
 export const todoFetchRequested = (): TodoActionTypes => ({
   type: TODO_FETCH_REQUESTED,
-  payload: {
-    todos: [],
-  },
 });
 
-export const todoFetchFailure = (): TodoActionTypes => ({
+export const todoFetchFailure = (error: string): TodoActionTypes => ({
   type: TODO_FETCH_FAILURE,
   payload: {
-    error: 'c tout kc',
+    error,
   },
 });
 
-export const todoFetchSuccess = (): TodoActionTypes => ({
+export const todoFetchSuccess = (todo: Todo): TodoActionTypes => ({
   type: TODO_FETCH_SUCCESS,
   payload: {
-    todos: [],
+    todo,
   },
 });
