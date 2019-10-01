@@ -1,6 +1,5 @@
 import {
   TodoActionTypes,
-  InitialState,
   TodoState,
 } from "../entities/todoList";
 
@@ -9,7 +8,7 @@ import {
   TODO_FETCH_SUCCESS,
 } from "../actions/actionTypes";
 
-const initialState: InitialState = {
+const initialState: TodoState = {
   todos: [],
   isLoading: false,
   isError: false,
@@ -17,7 +16,7 @@ const initialState: InitialState = {
 };
 
 const initialReducer = (
-  state: InitialState = initialState,
+  state: TodoState = initialState,
   action: TodoActionTypes
 ): TodoState => {
   switch (action.type) {

@@ -1,9 +1,17 @@
-const mapStateToProps = (state: State) => {
+import { connect } from "react-redux";
 
-};
+import { TodoState } from "../../entities/todoList";
 
-const mapDispatchToProps = () => {
+import { todoFetchRequested } from "../../actions/actions";
 
-};
+import TodoList from "../../components/TodoList/TodoList";
 
-export default TodoListContainer;
+export const mapStateToProps = (state: TodoState) => ({
+  todos: state.todos,
+});
+
+export const mapDispatchToProps = ({
+  fetchTodo: todoFetchRequested,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
