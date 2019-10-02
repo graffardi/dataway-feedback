@@ -4,6 +4,11 @@
   border: 2px #b19cd9 solid;
   border-radius: 10px;
   padding: 2em;
+  overflow: auto;
+
+  div {
+    padding: none;
+  }
 
   .todoListHeader {
     width: 100%;
@@ -34,5 +39,16 @@
     &:hover, :focus {
       background-color: #b19cd9;
     }
+  }
+
+  .todoListLoading {
+    text-align: center;
+
+    margin: 2em 0;
+  }
+
+  .todoListError {
+    color: red;
+    font-weight: 600;
   }
 }

@@ -1,22 +1,33 @@
 import React from 'react';
 
+import { CircularProgress } from '@material-ui/core';
+
 import { Todo } from '../../entities/todoList';
 
 import styles from './TodoList.module.scss';
 
+import TodoListItem from '../TodoListItem/TodoListItem';
+
 type Props = {
-  todos: Todo[],
-  fetchTodo: () => void,
+  todos: Todo[];
+  isLoading: boolean;
+  isError: boolean;
+  error: string;
+  fetchTodo: () => void;
 };
 
 const TodoList = (props: Props) => {
-  const { todos, fetchTodo } = props;
+  const {
+    todos,
+    isLoading,
+    isError,
+    error,
+    fetchTodo
+  } = props;
 
   const handleClick = () => {
     fetchTodo();
   }
-
-  console.log(todos);
 
   return (
     <div className={styles.todoListContainer}>
@@ -30,6 +41,23 @@ const TodoList = (props: Props) => {
           Go
         </button>
       </div>
+
+      {isLoading && (
+        <div className={styles.todoListLoading}>
+          <CircularProgress />
+        </div>
+      )}
+
+      <ul>
+        {isError && <li className={styles.todoListError}>{`${error}`}</li>}
+
+        {todos.map((todo: Todo, i: number) => (
+          <TodoListItem
+            {...todo}
+            key={`todo-${i}`}
+          />
+        ))}
+      </ul>
     </div>
   );
 };

@@ -1,11 +1,24 @@
 import React from 'react';
 
-const TodoListItem = () => {
+type Props = {
+  label: string;
+  content: string;
+};
+
+const TodoListItem = (props: Props) => {
+  const { label, content } = props;
+
   return (
-    <div>
-      TodoListItem
-    </div>
-  )
-}
+    <li>
+      <h4>
+        {label}
+      </h4>
+
+      <p>
+        {content}
+      </p>
+    </li>
+  );
+};
 
 export default TodoListItem;

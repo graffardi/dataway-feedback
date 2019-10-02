@@ -3230,6 +3230,13 @@ data-urls@^1.0.0, data-urls@^1.1.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
+dataway@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/dataway/-/dataway-2.0.0.tgz#746d0fde67b5d0e7e320c8ee0171221af4c07a11"
+  integrity sha512-D5tyUNakW4oNX0mvd/wfdtmDa5Hzs/pI7n8A+SFlxQYpxzEEaT3FfzTS7V+rrlkN6PgDy12hx2IvL6NMovNyxA==
+  dependencies:
+    fp-ts "^2.0.5"
+
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -4322,6 +4329,11 @@ forwarded@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
+
+fp-ts@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.0.5.tgz#9560d8a6a4f53cbda9f9b31ed8d1458e41939e07"
+  integrity sha512-opI5r+rVlpZE7Rhk0YtqsrmxGkbIw0dRNqGca8FEAMMnjomXotG+R9QkLQg20onx7R8qhepAn4CCOP8usma/Xw==
 
 fragment-cache@^0.2.1:
   version "0.2.1"

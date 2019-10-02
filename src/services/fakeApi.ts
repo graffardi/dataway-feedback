@@ -14,7 +14,7 @@ const fetchTodo = async (): Promise<Todo> => {
 
     setTimeout(
       () => resolve({
-        label: 'Faire un film sur le cyclimse',
+        label: 'Faire un flim sur le cyclimse',
         content: 'Surtout ne pas confondre la coquetterie et la classe',
       }),
       1500

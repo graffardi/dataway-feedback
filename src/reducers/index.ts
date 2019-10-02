@@ -6,6 +6,7 @@ import {
 import {
   TODO_FETCH_FAILURE,
   TODO_FETCH_SUCCESS,
+  TODO_FETCH_REQUESTED,
 } from "../actions/actionTypes";
 
 const initialState: TodoState = {
@@ -20,12 +21,18 @@ const initialReducer = (
   action: TodoActionTypes
 ): TodoState => {
   switch (action.type) {
+    case TODO_FETCH_REQUESTED: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+
     case TODO_FETCH_FAILURE: {
       const { error } = action.payload;
 
       return {
         ...state,
-        isLoading: false,
         isError: true,
         error,
       };
