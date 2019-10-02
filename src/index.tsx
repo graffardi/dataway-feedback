@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 
 import createSagaMiddleware from 'redux-saga';
 
-import watchTodosSaga from './sagas/todoList';
+import watchQuotesSaga from './sagas/quote';
 
 import App from './App';
 
@@ -22,7 +22,7 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(watchTodosSaga);
+sagaMiddleware.run(watchQuotesSaga);
 
 const ProvidedApp = () => (
   <Provider store={store}>

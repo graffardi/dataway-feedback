@@ -1,48 +1,37 @@
-import { notAsked, loading, fold } from "dataway";
+import { notAsked, loading } from "dataway";
 
 import {
-  TodoActionTypes,
-  TodoState,
-} from "../entities/todoList";
+  QuoteActionTypes,
+  QuoteState,
+} from "../entities/quote";
 
 import {
-  TODO_FETCH_RETRIEVED,
-  TODO_FETCH_REQUESTED,
+  QUOTE_FETCH_RETRIEVED,
+  QUOTE_FETCH_REQUESTED,
 } from "../actions/actionTypes";
 
-const initialState: TodoState = {
-  todos: [],
-  currentTodo: notAsked,
+const initialState: QuoteState = {
+  quote: notAsked,
 };
 
 const initialReducer = (
-  state: TodoState = initialState,
-  action: TodoActionTypes
-): TodoState => {
+  state: QuoteState = initialState,
+  action: QuoteActionTypes
+): QuoteState => {
   switch (action.type) {
-    case TODO_FETCH_REQUESTED: {
+    case QUOTE_FETCH_REQUESTED: {
       return {
         ...state,
-        currentTodo: loading,
+        quote: loading,
       };
     }
 
-    case TODO_FETCH_RETRIEVED: {
-      const { todo } = action.payload;
-
-      const todoAsArray = fold(
-        () => [],
-        () => [],
-        (_) => [],
-        (value) => [value],
-        todo
-      );
-
-      state.todos.push(...todoAsArray);
+    case QUOTE_FETCH_RETRIEVED: {
+      const { quote } = action.payload;
 
       return {
         ...state,
-        currentTodo: todo,
+        quote,
       }
     }
 

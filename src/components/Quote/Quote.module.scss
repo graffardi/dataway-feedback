@@ -1,4 +1,4 @@
-.todoListContainer {
+.quoteContainer {
   height: 80vh;
   width: 60vh;
   border: 2px #b19cd9 solid;
@@ -10,7 +10,7 @@
     padding: none;
   }
 
-  .todoListHeader {
+  .quoteHeader {
     width: 100%;
 
     display: flex;
@@ -26,7 +26,7 @@
     }
   }
 
-  .todoListButton {
+  .quoteButton {
     height: 4em;
     width: 20em;
 
@@ -41,13 +41,13 @@
     }
   }
 
-  .todoListLoading {
+  .quoteLoading {
     text-align: center;
 
     margin: 2em 0;
   }
 
-  .todoListError {
+  .quoteError {
     color: red;
     font-weight: 600;
   }
