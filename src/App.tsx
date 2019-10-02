@@ -1,13 +1,13 @@
 import React from 'react';
 
-import TodoListContainer from './containers/TodoListContainer/TodoListContainer';
+import QuoteContainer from './containers/QuoteContainer/QuoteContainer';
 
 import './App.css';
 
 const App = () => {
   return (
     <div className="App">
-      <TodoListContainer />
+      <QuoteContainer />
     </div>
   );
 }

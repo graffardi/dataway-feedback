@@ -1,26 +1,26 @@
-import { TodoActionTypes, Todo } from "../entities/todoList";
+import { QuoteActionTypes, Quote } from "../entities/quote";
 
 import {
-  TODO_FETCH_REQUESTED,
-  TODO_FETCH_FAILURE,
-  TODO_FETCH_SUCCESS,
+  QUOTE_FETCH_REQUESTED,
+  QUOTE_FETCH_FAILURE,
+  QUOTE_FETCH_SUCCESS,
 } from "../actions/actionTypes";
 
 
-export const todoFetchRequested = (): TodoActionTypes => ({
-  type: TODO_FETCH_REQUESTED,
+export const quoteFetchRequested = (): QuoteActionTypes => ({
+  type: QUOTE_FETCH_REQUESTED,
 });
 
-export const todoFetchFailure = (error: string): TodoActionTypes => ({
-  type: TODO_FETCH_FAILURE,
+export const quoteFetchFailure = (error: string): QuoteActionTypes => ({
+  type: QUOTE_FETCH_FAILURE,
   payload: {
     error,
   },
 });
 
-export const todoFetchSuccess = (todo: Todo): TodoActionTypes => ({
-  type: TODO_FETCH_SUCCESS,
+export const quoteFetchSuccess = (quote: Quote): QuoteActionTypes => ({
+  type: QUOTE_FETCH_SUCCESS,
   payload: {
-    todo,
+    quote,
   },
 });

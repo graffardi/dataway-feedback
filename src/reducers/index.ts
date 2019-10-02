@@ -1,34 +1,34 @@
 import {
-  TodoActionTypes,
-  TodoState,
-} from "../entities/todoList";
+  QuoteActionTypes,
+  QuoteState,
+} from "../entities/quote";
 
 import {
-  TODO_FETCH_FAILURE,
-  TODO_FETCH_SUCCESS,
-  TODO_FETCH_REQUESTED,
+  QUOTE_FETCH_SUCCESS,
+  QUOTE_FETCH_FAILURE,
+  QUOTE_FETCH_REQUESTED,
 } from "../actions/actionTypes";
 
-const initialState: TodoState = {
-  todos: [],
+const initialState: QuoteState = {
+  quote: null,
   isLoading: false,
   isError: false,
   error: '',
 };
 
 const initialReducer = (
-  state: TodoState = initialState,
-  action: TodoActionTypes
-): TodoState => {
+  state: QuoteState = initialState,
+  action: QuoteActionTypes
+): QuoteState => {
   switch (action.type) {
-    case TODO_FETCH_REQUESTED: {
+    case QUOTE_FETCH_REQUESTED: {
       return {
         ...state,
         isLoading: true,
       };
     }
 
-    case TODO_FETCH_FAILURE: {
+    case QUOTE_FETCH_FAILURE: {
       const { error } = action.payload;
 
       return {
@@ -38,13 +38,13 @@ const initialReducer = (
       };
     }
 
-    case TODO_FETCH_SUCCESS: {
-      const { todo } = action.payload;
+    case QUOTE_FETCH_SUCCESS: {
+      const { quote } = action.payload;
 
       return {
         ...state,
         isLoading: false,
-        todos: [todo, ...state.todos],
+        quote,
       }
     }
 
