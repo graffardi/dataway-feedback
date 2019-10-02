@@ -37,7 +37,7 @@ const initialReducer = (
       return {
         ...state,
         isLoading: false,
-        todos: [...state.todos, todo],
+        todos: [todo, ...state.todos],
       }
     }
 
