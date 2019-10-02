@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Dataway, fold } from 'dataway';
-
 import { CircularProgress } from '@material-ui/core';
 
 import { Quote as QuoteType } from '../../entities/quote';
@@ -9,14 +7,20 @@ import { Quote as QuoteType } from '../../entities/quote';
 import styles from './Quote.module.scss';
 
 type Props = {
-  quote: Dataway<Error, QuoteType>;
+  quote: QuoteType | null;
+  isLoading: boolean;
+  isError: boolean;
+  error: string;
   fetchQuote: () => void;
 };
 
 const Quote = (props: Props) => {
   const {
     quote,
-    fetchQuote
+    isLoading,
+    isError,
+    error,
+    fetchQuote,
   } = props;
 
   const handleClick = () => {
@@ -37,21 +41,19 @@ const Quote = (props: Props) => {
       </div>
 
       <div className={styles.quote}>
-        {fold(
-          () => null,
-          () => (
-            <div className={styles.quoteLoading}>
-              <CircularProgress />
-            </div>
-          ),
-          (error) => <p className={styles.quoteError}>{error}</p>,
-          (quoteValue) => (
-            <>
-              <h3>{quoteValue.label}</h3>
-              <p>{quoteValue.content}</p>
-            </>
-          ),
-          quote
+        {isError && <p className={styles.quoteError}>{error}</p>}
+
+        {isLoading && (
+          <div className={styles.quoteLoading}>
+            <CircularProgress />
+          </div>
+        )}
+
+        {quote && (
+          <>
+            <h3>{quote.label}</h3>
+            <p>{quote.content}</p>
+          </>
         )}
       </div>
     </div>

@@ -11,20 +11,31 @@ export type Quote = {
 };
 
 export type QuoteState = {
-  quote: Dataway<Error, Quote>;
+  quote: Quote | null;
+  isLoading: boolean;
+  isError: boolean;
+  error: string;
 };
 
 type QuoteFetchRequested = {
   type: 'QUOTE_FETCH_REQUESTED',
 };
 
-type QuoteFetchRetrieved = {
-  type: 'QUOTE_FETCH_RETRIEVED',
+type QuoteFetchFailure = {
+  type: 'QUOTE_FETCH_FAILURE',
   payload: {
-    quote: Dataway<Error, Quote>,
+    error: string,
+  },
+};
+
+type QuoteFetchSuccess = {
+  type: 'QUOTE_FETCH_SUCCESS',
+  payload: {
+    quote: Quote,
   },
 };
 
 export type QuoteActionTypes =
   | QuoteFetchRequested
-  | QuoteFetchRetrieved;
+  | QuoteFetchFailure
+  | QuoteFetchSuccess;

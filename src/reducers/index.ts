@@ -1,17 +1,19 @@
-import { notAsked, loading } from "dataway";
-
 import {
   QuoteActionTypes,
   QuoteState,
 } from "../entities/quote";
 
 import {
-  QUOTE_FETCH_RETRIEVED,
+  QUOTE_FETCH_SUCCESS,
+  QUOTE_FETCH_FAILURE,
   QUOTE_FETCH_REQUESTED,
 } from "../actions/actionTypes";
 
 const initialState: QuoteState = {
-  quote: notAsked,
+  quote: null,
+  isLoading: false,
+  isError: false,
+  error: '',
 };
 
 const initialReducer = (
@@ -22,15 +24,26 @@ const initialReducer = (
     case QUOTE_FETCH_REQUESTED: {
       return {
         ...state,
-        quote: loading,
+        isLoading: true,
       };
     }
 
-    case QUOTE_FETCH_RETRIEVED: {
+    case QUOTE_FETCH_FAILURE: {
+      const { error } = action.payload;
+
+      return {
+        ...state,
+        isError: true,
+        error,
+      };
+    }
+
+    case QUOTE_FETCH_SUCCESS: {
       const { quote } = action.payload;
 
       return {
         ...state,
+        isLoading: false,
         quote,
       }
     }

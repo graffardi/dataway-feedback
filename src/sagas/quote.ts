@@ -1,9 +1,7 @@
-import { success, failure, map } from 'dataway';
-
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { QUOTE_FETCH_REQUESTED } from '../actions/actionTypes';
-import { quoteFetchRetrieved } from '../actions/actions';
+import { quoteFetchSuccess, quoteFetchFailure } from '../actions/actions';
 
 import { ApiQuote } from '../entities/quote';
 
@@ -18,9 +16,9 @@ function* fetchQuote() {
   try {
     const apiQuote: ApiQuote = yield call(fakeApi.fetchQuote);
 
-    yield put(quoteFetchRetrieved(map(quoteDecoder)(success(apiQuote))));
+    yield put(quoteFetchSuccess(quoteDecoder(apiQuote)));
   } catch (error) {
-    yield put(quoteFetchRetrieved(failure(error)));
+    yield put(quoteFetchFailure(error));
   }
 }
 
