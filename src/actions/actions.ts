@@ -1,20 +1,21 @@
 import { Dataway } from "dataway";
 
-import { TodoActionTypes, Todo } from "../entities/todoList";
+import { QuoteActionTypes, Quote } from "../entities/quote";
 
 import {
-  TODO_FETCH_REQUESTED,
-  TODO_FETCH_RETRIEVED,
+  QUOTE_FETCH_REQUESTED,
+  QUOTE_FETCH_RETRIEVED,
 } from "../actions/actionTypes";
 
 
-export const todoFetchRequested = (): TodoActionTypes => ({
-  type: TODO_FETCH_REQUESTED,
+export const quoteFetchRequested = (): QuoteActionTypes => ({
+  type: QUOTE_FETCH_REQUESTED,
 });
 
-export const todoFetchRetrieved = (todo: Dataway<Error, Todo>): TodoActionTypes => ({
-  type: TODO_FETCH_RETRIEVED,
-  payload: {
-    todo,
-  },
-});
+export const quoteFetchRetrieved = (quote: Dataway<Error, Quote>)
+  : QuoteActionTypes => ({
+    type: QUOTE_FETCH_RETRIEVED,
+    payload: {
+      quote,
+    },
+  });

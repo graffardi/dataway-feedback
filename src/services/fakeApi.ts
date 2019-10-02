@@ -1,8 +1,8 @@
-import { Todo } from "../entities/todoList";
+import { ApiQuote } from "../entities/quote";
 
-const fetchTodo = async (): Promise<Todo> => {
+const fetchQuote = async (): Promise<ApiQuote> => {
 
-  const todoPromise: Todo = await new Promise((resolve, reject) => {
+  const quotePromise: ApiQuote = await new Promise((resolve, reject) => {
     const randError = Math.ceil(Math.random() * 10) % 5;
 
     if (randError === 4) {
@@ -14,16 +14,16 @@ const fetchTodo = async (): Promise<Todo> => {
 
     setTimeout(
       () => resolve({
-        label: 'Faire un flim sur le cyclimse',
+        title: 'Faire un flim sur le cyclimse',
         content: 'Surtout ne pas confondre la coquetterie et la classe',
       }),
       1500
     );
   });
 
-  return todoPromise;
+  return quotePromise;
 };
 
 export default {
-  fetchTodo,
+  fetchQuote,
 };
