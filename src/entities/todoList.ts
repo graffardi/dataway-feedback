@@ -1,3 +1,5 @@
+import { Dataway } from 'dataway';
+
 export type Todo = {
   label: string;
   content: string;
@@ -5,30 +7,20 @@ export type Todo = {
 
 export type TodoState = {
   todos: Todo[];
-  isLoading: boolean;
-  isError: boolean;
-  error: string;
+  currentTodo: Dataway<Error, Todo>;
 };
 
 type TodoFetchRequested = {
   type: 'TODO_FETCH_REQUESTED',
 };
 
-type TodoFetchFailure = {
-  type: 'TODO_FETCH_FAILURE',
+type TodoFetchRetrieved = {
+  type: 'TODO_FETCH_RETRIEVED',
   payload: {
-    error: string,
-  },
-};
-
-type TodoFetchSuccess = {
-  type: 'TODO_FETCH_SUCCESS',
-  payload: {
-    todo: Todo,
+    todo: Dataway<Error, Todo>,
   },
 };
 
 export type TodoActionTypes =
   | TodoFetchRequested
-  | TodoFetchFailure
-  | TodoFetchSuccess;
+  | TodoFetchRetrieved;

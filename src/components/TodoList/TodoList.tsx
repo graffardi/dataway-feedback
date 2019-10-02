@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Dataway, fold } from 'dataway';
+
 import { CircularProgress } from '@material-ui/core';
 
 import { Todo } from '../../entities/todoList';
@@ -10,18 +12,14 @@ import TodoListItem from '../TodoListItem/TodoListItem';
 
 type Props = {
   todos: Todo[];
-  isLoading: boolean;
-  isError: boolean;
-  error: string;
+  currentTodo: Dataway<Error, Todo>,
   fetchTodo: () => void;
 };
 
 const TodoList = (props: Props) => {
   const {
     todos,
-    isLoading,
-    isError,
-    error,
+    currentTodo,
     fetchTodo
   } = props;
 
@@ -42,14 +40,18 @@ const TodoList = (props: Props) => {
         </button>
       </div>
 
-      {isLoading && (
-        <div className={styles.todoListLoading}>
-          <CircularProgress />
-        </div>
-      )}
-
       <ul>
-        {isError && <li className={styles.todoListError}>{`${error}`}</li>}
+        {fold(
+          () => { },
+          () => (
+            <div className={styles.todoListLoading}>
+              <CircularProgress />
+            </div>
+          ),
+          (error) => <li className={styles.todoListError}>{`${error}`}</li>,
+          (value) => { },
+          currentTodo
+        )}
 
         {todos.map((todo: Todo, i: number) => (
           <TodoListItem

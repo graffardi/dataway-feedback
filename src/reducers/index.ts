@@ -1,19 +1,18 @@
+import { notAsked, loading, fold } from "dataway";
+
 import {
   TodoActionTypes,
   TodoState,
 } from "../entities/todoList";
 
 import {
-  TODO_FETCH_FAILURE,
-  TODO_FETCH_SUCCESS,
+  TODO_FETCH_RETRIEVED,
   TODO_FETCH_REQUESTED,
 } from "../actions/actionTypes";
 
 const initialState: TodoState = {
   todos: [],
-  isLoading: false,
-  isError: false,
-  error: '',
+  currentTodo: notAsked,
 };
 
 const initialReducer = (
@@ -24,27 +23,26 @@ const initialReducer = (
     case TODO_FETCH_REQUESTED: {
       return {
         ...state,
-        isLoading: true,
+        currentTodo: loading,
       };
     }
 
-    case TODO_FETCH_FAILURE: {
-      const { error } = action.payload;
-
-      return {
-        ...state,
-        isError: true,
-        error,
-      };
-    }
-
-    case TODO_FETCH_SUCCESS: {
+    case TODO_FETCH_RETRIEVED: {
       const { todo } = action.payload;
 
+      const todoAsArray = fold(
+        () => [],
+        () => [],
+        (_) => [],
+        (value) => [value],
+        todo
+      );
+
+      state.todos.push(...todoAsArray);
+
       return {
         ...state,
-        isLoading: false,
-        todos: [todo, ...state.todos],
+        currentTodo: todo,
       }
     }
 

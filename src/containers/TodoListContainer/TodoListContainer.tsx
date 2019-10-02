@@ -8,9 +8,7 @@ import TodoList from "../../components/TodoList/TodoList";
 
 export const mapStateToProps = (state: TodoState) => ({
   todos: state.todos,
-  isLoading: state.isLoading,
-  isError: state.isError,
-  error: state.error,
+  currentTodo: state.currentTodo,
 });
 
 export const mapDispatchToProps = ({
